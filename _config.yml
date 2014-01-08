@@ -1,0 +1,7 @@
+name: zenith
+markdown: redcarpet
+pygments: true
+
+exclude: [
+    'Rakefile'
+]
