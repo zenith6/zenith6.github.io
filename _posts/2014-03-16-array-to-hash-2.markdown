@@ -14,7 +14,7 @@ PHP:
 {% highlight php %}
 <?php
 $a = range('a', 'z');
-$h = array_fill_key($a, 'value');
+$h = array_fill_keys($a, 'value');
 {% endhighlight %}
 
 Ruby:
