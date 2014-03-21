@@ -1,6 +1,16 @@
 name: zenith
 markdown: redcarpet
 pygments: true
+github: github.com/zenith6
+about:
+urls:
+    - text: github
+      url: https://github.com/zenith6
+    - text: email
+      url: mailto:zenith6@gmail.com
+
+redcarpet:
+    extensions: [no_intra_emphasis, fenced_code_blocks, autolink, tables, with_toc_data]
 
 exclude: [
     'Rakefile'
