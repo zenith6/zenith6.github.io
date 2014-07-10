@@ -7,7 +7,7 @@ SOURCE = "."
 CONFIG = {
     version: "0.3.0",
     posts: File.join(SOURCE, "_posts"),
-    post_ext: "markdown",
+    post_ext: "md",
     browser: "firefox"
 }
 
@@ -35,7 +35,7 @@ task :post do
     if File.exist?(filename)
         abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
     end
-    
+
     puts "Creating new post: #{filename}"
     open(filename, 'w') do |post|
         post.puts "---"
