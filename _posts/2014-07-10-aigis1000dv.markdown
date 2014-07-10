@@ -1,0 +1,45 @@
+---
+layout: post
+title: "千年戦争アイギス用のツール"
+date: 2014-07-10 22:03:50
+category: game
+tags: [javascript]
+---
+
+[千年戦争アイギス](http://www.dmm.co.jp/netgame_s/aigis/)
+というソーシャルゲーム用にいくつかツールを作成しました。
+このゲームはタワーディフェンスに育成要素を加えたもので大変面白いです。
+18歳未満の方はプレイしちゃダメですよ！
+
+
+## アイギスダメージビジュアライザー ##
+
+http://jsfiddle.net/kMYe2/embedded/result/
+
+ユニットの戦闘能力や回復能力などいくつかの要素を可視化するツールです。
+他人のプレイを観て「自分の手駒で代用できるかな？」を確認できるよう作成しました。
+チャートには Google Visualization API を、
+データベースには Google スプレッドシートを、
+その他コンポーネントには Bootstrap, jQuery, Select2, Bootstrap TouchSpin を使用しています。
+スプレッドシートの利用は同じようにツールを作成している方を参考にしました。
+画面右上の "Edit in JSFiddle" からソースコードを読めます。
+
+
+## キャリーさんもそう思うジェネレーター ##
+
+http://jsfiddle.net/Qsc22/embedded/result/
+
+イラストレーターさんが描いたキャラクターをテンプレートにして画像を作成するツールです。
+よくある○○ジェネレーターです。
+テンプレートになる元の絵は2chの本スレから拾っています。
+Canvasのよい勉強になりました。
+こちらも画面右上の "Edit in JSFiddle" からソースコードを読めます。
+
+
+## JavaScriptは ##
+
+楽しいですね！
+
+
+## 参考 ##
+[アイギスリンク集](http://jsfiddle.net/nmLe8/show/)
