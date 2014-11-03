@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>アイギス住民の魂タイマー</title>
+  <link rel="stylesheet" type="text/css" href="//bootswatch.com/cyborg/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <form class="form" action="#">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <label class="control-label">現在の住民の魂</label>
+                    <input class="form-control input-lg" type="text" name="current" value="30" ime-mode="inactive" />
+                </div>
+                <div class="col-xs-12 col-sm-5 col-md-4">
+                    <label class="control-label">目標数</label>
+                    <select name="objective" class="form-control input-lg"></select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">イベント期間</label>
+            <div id="period_dates" class="progress">
+            </div>
+            <div id="period_progress" class="progress progress-striped active">
+                <div class="progress-bar" role="progressbar">
+                    <span></span>
+                </div>
+            </div>
+            <div id="objective_progress" class="progress progress-striped active">
+                <div class="progress-bar" role="progressbar">
+                    <span></span>
+                </div>
+            </div>
+            <div id="estimate">
+                <span class="pointer">
+                    <span class="pointer-label">
+                        このペースなら<br />
+                        <strong id="estimate_num">0</strong> 個集まるわ
+                    </span>
+                </span>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-xs-5 col-sm-3">
+            <section id="rewards">
+                <table class="table table-condenced">
+                    <thead>
+                        <tr>
+                            <th class="text-right">収集数</th>
+                            <th>追加報酬</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        <div class="col-xs-7 col-sm-9">
+            <section class="row">
+                <div class="col-sm-12">
+                    <div class="norma">
+                        <span class="norma-label">1日当たりのノルマ</span>
+                        <span class="badge">残り<span id="remains_days"></span>日</span>
+                        <span class="norma-amount"><span id="norma_per_day"></span><span class="norma-unit">個</span></span>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="norma norma-per-hour">
+                        <span class="norma-label">1時間当たりのノルマ</span>
+                        <span class="badge">残り<span id="remains_hours"></span>時間</span>
+                        <span class="norma-amount"><span id="norma_per_hour"></span><span class="norma-unit">個</span></span>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="norma norma-per-minute">
+                        <span class="norma-label">30分当たりのノルマ</span>
+                        <span class="badge">残り<span id="remains_minutes"></span>分</span>
+                        <span class="norma-amount"><span id="norma_per_minute"></span><span class="norma-unit">個</span></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!--
+    <form class="form" action="#">
+        <div class="form-group">
+            <label>カリスマ自然回復</label>
+            <div id="charisma" class="progress progress-striped active">
+                <div id="payed_charisma" class="progress-bar progress-bar-payed">
+                    <span></span>済
+                </div>
+                <div id="balance_charisma" class="progress-bar progress-bar-balance">
+                    <span></span>残
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>スタミナ自然回復</label>
+            <div id="stamina" class="progress progress-striped active">
+                <div id="payed_stamina" class="progress-bar  progress-bar-payed">
+                    <span></span>済
+                </div>
+                <div id="balance_stamina" class="progress-bar progress-bar-balance">
+                    <span></span>残
+                </div>
+            </div>
+        </div>
+    </form>
+    -->
+
+    <section id="map">
+        <table class="table table-condenced table-striped">
+            <thead>
+                <tr>
+                    <th>MAP</th>
+                    <th>カリスタ</th>
+                    <th class="drops" colspan="3">ドロップ</th>
+                    <th>
+                        <select name="expectation" class="form-control input-sm">
+                            <option value="drop">謎の期待値 1周</option>
+                            <option value="charisma">カリスマ1当たり</option>
+                            <option value="stamina">スタミナ1当たり</option>
+                        </select>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </section>
+
+    <div class="textar-aa">
+<br />　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(　　　)　trick or mikoto?<br />　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　( っ&para;&para;<br />
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(ニ二二二ニ)<br />
+　　　　　　　　　　　　　　　　　　　　　　　　　　　 　 　 )=========(<br />
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　|　　　　||　　　|<br />
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 (）　　　（||）　　 |<br />
+　　　　　　　　　　　　　　　　　　　　　　　　　　 　 　 ヽ　　 　 ||　 　 /<br />
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 /ヽ二ニ====/､<br />
+　　　　　　　　　　　　　　　　　　　　　　　　　　 　 　 |/ /　/､　 ／､ |<br />
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 　 |_/　|￣ 　 |/<br />
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 |<br />
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　 _,,...x--?ｘr- ..,,_<br />
+　　　　　　　　　　　　　　　　　　　　　　　　　　／&acute; ｨ'&quot;｀ソヘ'&quot;ﾞ丶、　｀ヽ、<br />
+　　　　　　　　　　　　　　　　　　　　　　　　イ&acute;　　　　/&acute;　　 ｀　　｀　 、　丶<br />
+　　　　　　　　　　　　　　　　　　　　　　 /&acute;　/　　　,　　　　　　　ヽ、　ヽ,　　',<br />
+　　　　　　　　　　　　　　　　　　　　　 //　 ,'　　,/ { i　　　　 八　　V　　V　∧<br />
+　　　　　　　　　　　　　　　　　　　　　 i i　　i　 イ__{_|　　／,-ト人　ﾉ!,　　V　∧<br />
+　　　　　　　　　　　　　　　　　　　　　 {i{　 { M、?l |、ノｿﾉ ﾉ'ﾉ_ノノ　i　　l　　 i<br />
+　　　　　　　　　　　　　　　　　　　　　 ヾ}、ヽ{&gt;示=ﾐ!{ヽ i{,' 斗＝=ミｧ l　　l　　 l<br />
+　　　　　　　　　　　　　　　　　　　　　　 { |｀&uml;三l::::::l三ヽ.{三l:::::::::::}三ﾉ ﾉ/｀',　i<br />
+　　　　　　　　　　　　　　　　　　　　　　　〉　.{　弋:ﾉ三三三弋::::ノ ノノノ　ﾉ　 ｌ<br />
+　　　　　　　　　　　　　　　　　　　　　　//|　 、　　　　　　　　　　&quot;&acute;　/'- '　 |,{<br />
+　　　　　　　　　　　　　　　　　　　　　ノ'&acute; l'、 ヽ、　　　△　　　　　,ィ〈__　　 ﾉヾ、<br />
+　　　　　　　　　　　　　　　　　　　　 　　　 {'｀)ヽ)ヾ&gt;-s。,- 、-- &acute;/　/　＞〈<br />
+　　　　　　　　　　　　　　　 　　　　　　　　 r-x,ｿ_i&acute;l　 /_/＿＿＿/ /　 /.&acute;｀ヽ,　 ＿_<br />
+　　　　　　　　　　　　　　　　　　　　　　　　ヾ.、　{_{(t)'ー-ァ──ゝ'　 /　　 _/&acute;　　 ﾉ<br />
+　　　　　　　　　　　　　　　　　　　　　　　　 ｀i ｀＞'/ｌゝ　　　　　　　　/_ゞイ　　　　/<br />
+　　　　　　　 　　　　　　　　　　　　　　　　　 |　 '&acute;{　　　　　　　　　　}'&acute;V　　　　　 }<br />
+　　　　　　　　　　　　　　　　　　　　　　　　r'　　 ヽ、　　　,　　　　 ノ｀ヽl　　　　　{<br />
+　　　　　　　　　　　　　　　　　　　　　　 ／｀丶＜ ) ｀　　'&acute;&quot;'　　 &acute;　!　 .{ヽ__　　 ∧<br />
+　　　　　　　　　　　　　　　　　　　　　／　ｒ - 、 /　　　、　　　　　_,,..&gt;'&acute;&acute;　 ヽ、　∧<br />
+　　　　　　　 　　　　　　　　　　　　　l　 /／ｿ&quot;''ヽヽ,__,x-三＞=三-.、　　　　　 ｀ヽ　}<br />
+　　　　　　　　　　　　　　　　　　　　　|　ﾟ/ {&acute;、、{ﾉ-〈 ｀＞二}/&acute;　 ｀、ﾟ、　　　　　　 /<br />
+　　　　　　　　　　　　　　　　　 ＿＿ ﾉ// /｀ー/&acute;:::::::l／&acute;:::／?心'　ヽ,ヽ。　　　　 λ<br />
+　　　　　　　　 　　　　　　　／　　'&quot;&acute;。l　{:::::::i'::::::::::/::::::::/::::::::::::::::｀ヽ,　ヽ,ヽ　　　ﾉヽ｀ー─-- 、<br />
+　　　　　　　　　　　　　,ﾍヘ__ノ&acute;_二ﾟ二二ノ .{:.::::::|:::::::::{::::::::::{:::::::::::::::::-/&acute;ヽ,　ヽ｀。 &acute;　 ﾉ　　　　　∧,<br />
+　　　　　　　　　　 ＜＜_r──── '&acute; !::::::::|:::::::::!:::::::::|:::::::::::::::::::::::::::::ヽ　ヽ_ヽ__ 。 ＿_ 。＿_ 。&gt;,へヘ,、<br />
+　　　　　　　　　　　　　　　　　　　　　　　ヽ:::::ヽ::::::::&gt;、:::!、::::::::::::::::;;x''&quot;&quot;｀ー--＝＝＝＝───'　　｀ﾞ&quot;<br />
+　　　　　　　　　　　　　　　　　　　　　　　　　￣￣　　 ￣￣￣￣
+</div>
+</div>
+
+<footer>
+    <ul>
+        <li><a href="http://green.zero.jp/greentea/">クロリスGIFは <strong>建設中の茶柱</strong> さんからお借りしました。</a></li>
+        <li><a href="http://font.textar.tv/">web fonts provided by http://font.textar.tv/</a></li>
+        <li><a href="http://jsfiddle.net/nmLe8/show/">他の方が作ったツール達はこちらです！ <span class="label label-info">お勧め!!</span></a></li>
+        <li><a href="http://jsfiddle.net/Qsc22/show/">キャリーさんもそう思うジェネレーター <span class="label label-primary">this way...</span></a></li>
+        <li><a href="http://jsfiddle.net/kMYe2/show/">ダメージビジュアライザー <span class="label label-primary">グラフにするとむしろキャリーさんが強く見える</span></a></li>
+        <li><a href="http://jsfiddle.net/qDCKE/show/">アイギスクロスしてないレビュー <span class="label label-primary">千年論争</span></a></li>
+        <li><a href="http://jsfiddle.net/RJNGV/show/">千年パズルアイギス <span class="label label-primary">for tikubi-niki</span></a></li>
+        <li><a href="http://jsfiddle.net/kypLqg48/show/">千年広告ジェネレーター <span class="label label-primary">絶対にプレイしないで下さい</span></a></li>
+        <li><a href="https://chrome.google.com/webstore/detail/ememknmjckfbganihedbodegbdddlhhl?hl=ja" target="_blank">漆黒の射手リタさんがチラチラ見てくる <span class="label label-primary">99%邪魔用</span></a></li>
+        <li><a href="http://jsfiddle.net/C3A5x/show/">ご飯計算機 <span class="label label-warning">カッコカリ</span></a></li>
+        <li><a href="http://jsfiddle.net/ojkvu15d/show/">住民の魂タイマー <span class="label label-default">ブルーマン</span></a></li>
+        <li><a href="http://jsfiddle.net/fz35p2rr/show/">竜水晶タイマー2 <span class="label label-default">6枚5000円</span></a></li>
+        <li><a href="http://jsfiddle.net/2Ljnvgu2/show/">竜の牙タイマー <span class="label label-default">アーニャ＆エキドナ「王子やめて！」</span></a></li>
+        <li><a href="http://jsfiddle.net/9YsL7/show/">竜水晶タイマー <span class="label label-default">※もう手に入ります</span></a></li>
+        <li><a href="http://jsfiddle.net/9pBBz/show/">兵法書タイマー <span class="label label-default">はわわ</span></a></li>
+        <li><a href="http://jsfiddle.net/6vHTt/show/">血清タイマー <span class="label label-default">死ーん</span></a></li>
+    </ul>
+</footer>
+
+  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="//font.textar.tv/webfont.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//zenith6.github.io/files/bootstrap.touchspin.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+  <script src="timer.js"></script>
+</body>
+</html>
